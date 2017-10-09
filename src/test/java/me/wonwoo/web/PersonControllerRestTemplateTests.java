@@ -4,6 +4,7 @@ import me.wonwoo.domain.Person;
 import me.wonwoo.junit.DisabledOnMac;
 import me.wonwoo.junit.EnabledOnMac;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,8 +28,8 @@ class PersonControllerRestTemplateTests {
     this.template = template;
   }
 
-  @Test
   @DisplayName("😡")
+  @RepeatedTest(10)
   void person() {
     Person person = template.getForEntity("/persons/{name}", Person.class, "wonwoo").getBody();
     assertThat(person).isEqualTo(new Person("wonwoo"));
@@ -36,7 +37,7 @@ class PersonControllerRestTemplateTests {
 
   @Test
   @DisabledOnMac
-  public void disabledOnMac() {
+  void disabledOnMac() {
     assertThat(true).isEqualTo(false);
   }
 }
