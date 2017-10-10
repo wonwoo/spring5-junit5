@@ -7,8 +7,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import me.wonwoo.mockito.TimingExtension;
 
-@ExtendWith(SpringExtension.class)
-@ExtendWith(TimingExtension.class)
+@ExtendWith({SpringExtension.class, TimingExtension.class})
 @Documented
 @Inherited
 @Retention(RetentionPolicy.RUNTIME)
