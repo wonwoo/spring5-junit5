@@ -21,7 +21,7 @@ class PersonControllerMockMvcTests {
   @Test
   @DisplayName("😎")
   void persons(@Autowired MockMvc mvc) throws Exception {
-    mvc.perform(get("/persons", 1))
+    mvc.perform(get("/persons"))
         .andDo(print())
         .andExpect(jsonPath("$[0].name").value("wonwoo"))
         .andExpect(jsonPath("$[1].name").value("kevin"))
