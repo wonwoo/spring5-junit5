@@ -32,7 +32,7 @@ class PersonControllerRestTemplateTests {
   @RepeatedTest(10)
   void person() {
     Person person = template.getForEntity("/persons/{name}", Person.class, "wonwoo").getBody();
-    assertThat(person).isEqualTo(new Person("wonwoo"));
+    assertThat(person.getName()).isEqualTo("wonwoo");
   }
 
   @Test

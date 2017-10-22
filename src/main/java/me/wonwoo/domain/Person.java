@@ -1,11 +1,17 @@
 package me.wonwoo.domain;
 
 
-public class Person {
+import me.wonwoo.memory.Entity;
+
+import java.util.UUID;
+
+public class Person implements Entity<UUID> {
 
   private String name;
+  private UUID id;
 
-  Person() {}
+  Person() {
+  }
 
   public Person(String name) {
     this.name = name;
@@ -19,6 +25,17 @@ public class Person {
     this.name = name;
   }
 
+
+  @Override
+  public UUID getId() {
+    return this.id;
+  }
+
+  @Override
+  public void setId(UUID id) {
+    this.id = id;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
@@ -26,11 +43,21 @@ public class Person {
 
     Person person = (Person) o;
 
-    return name != null ? name.equals(person.name) : person.name == null;
+    return id != null ? id.equals(person.getId()) : person.getId() == null;
   }
 
   @Override
   public int hashCode() {
-    return name != null ? name.hashCode() : 0;
+    return id != null ? id.hashCode() : 0;
   }
+
+  @Override
+  public String toString() {
+    return "Person{" +
+        "name='" + name + '\'' +
+        ", id=" + id +
+        '}';
+  }
+
+
 }
